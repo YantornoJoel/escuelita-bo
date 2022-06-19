@@ -1,0 +1,100 @@
+/* body{
+    background: #E0EAFC;
+    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
+    background: linear-gradient(to right, #CFDEF3, #E0EAFC);
+} */
+
+.imgFondo {
+    background-image: url(./escuelita.png);
+    /* height: 100px; */
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    background-color: transparent !important;
+}
+
+.buscador {
+    display: flex;
+    margin-left: 1205px;
+    margin-bottom: 20px;
+
+}
+
+#total-alumnos2 {
+    display: none;
+}
+
+#button-buscador:hover {
+    background-color: white;
+    border: 2px solid #6CBF19;
+}
+
+#button-buscador {
+    background-color: #6CBF19;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+}
+
+#button-buscador-cancelar:hover {
+    background-color: white;
+    border: 2px solid #ED0202;
+}
+
+#button-buscador-cancelar {
+    background-color: #ED0202;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+}
+
+/* .navegacion-item {
+    display: flex;
+    flex-direction: column-reverse;
+} */
+
+@media (max-width: 1593px) {
+    .buscador {
+        margin-left: 800px;
+    }
+
+    #text-buscador {
+        min-width: 200px
+    }
+}
+
+@media (max-width: 1499px) {
+    .buscador {
+        margin-left: 600px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .buscador {
+        margin-left: 450px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .buscador {
+        margin-left: 350px;
+    }
+}
+
+@media (max-width: 950px) {
+    .buscador {
+        margin-left: 0px;
+    }
+
+    #total-alumnos {
+        display: none;
+    }
+
+    #total-alumnos2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer {
+        margin-top: 25px;
+    }
+}
