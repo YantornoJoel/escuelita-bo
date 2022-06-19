@@ -4,19 +4,16 @@
     background: linear-gradient(to right, #CFDEF3, #E0EAFC);
 } */
 
+
 .imgFondo {
     background-image: url(./escuelita.png);
     /* height: 100px; */
     background-repeat: no-repeat;
 }
 
-.navbar {
-    background-color: transparent !important;
-}
-
 .buscador {
     display: flex;
-    margin-left: 1205px;
+    margin-left: 1150px;
     margin-bottom: 20px;
 
 }
@@ -57,9 +54,9 @@
         margin-left: 800px;
     }
 
-    #text-buscador {
+    /* #text-buscador {
         min-width: 200px
-    }
+    } */
 }
 
 @media (max-width: 1499px) {

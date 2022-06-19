@@ -4,12 +4,16 @@ import { save, updateUser } from '../service/Student'
 
 
 const actividades = [
-    { id: 1, nombre: 'folklore' },
-    { id: 2, nombre: 'futbol' },
-    { id: 3, nombre: 'futsal' },
-    { id: 4, nombre: 'hockey' },
-    { id: 5, nombre: 'patin' },
-    { id: 6, nombre: 'volley' }
+    { id: 1, nombre: 'espacio de recreacion don orione' },
+    { id: 2, nombre: 'defensa personal' },
+    { id: 3, nombre: 'folklore' },
+    { id: 4, nombre: 'futbol inf fem' },
+    { id: 5, nombre: 'futbol inf masc' },
+    { id: 6, nombre: 'futsal fem' },
+    { id: 7, nombre: 'futsal masc' },
+    { id: 8, nombre: 'patin' },
+    { id: 9, nombre: 'volley' },
+    { id: 10, nombre: 'zumba' }
 ]
 
 export const CreateStudent = () => {

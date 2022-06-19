@@ -122,22 +122,24 @@ export const StudentList = () => {
                     variant="outlined"
                     value={search}
                     onChange={handleChange}
-                    style={{ minWidth: window.screen.width < 950 ? '100px' : '500px' }}
+                    style={{ minWidth: window.screen.width < 950 ? '100px' : '500px', maxWidth: window.screen.width < 950 ? '170px' : '700px' }}
                 />
+                {/* <div className='buscadores'> */}
                 <button
                     id='button-buscador'
-                    className='btn'
+                    className={`btn`}
                     onClick={() => search ? findByName(search) : getStudents()}
                 >
                     <Search />
                 </button>
                 <button
                     id='button-buscador-cancelar'
-                    className='btn '
+                    className={`btn`}
                     onClick={() => getStudents()}
                 >
                     <Close />
                 </button>
+                {/* </div> */}
             </div>
             <Grid className="fadeIn">
                 <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
