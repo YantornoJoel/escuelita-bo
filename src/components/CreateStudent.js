@@ -26,7 +26,7 @@ export const CreateStudent = () => {
         nsocio: localStorage.getItem('nsocio') || '',
         telefono: localStorage.getItem('telefono') || '',
         antecedentesSalud: localStorage.getItem('antecedentesSalud') || '',
-        actividad: localStorage.getItem('actividad') || ''
+        actividad: localStorage.getItem('actividad') || 'espacio de recreacion don orione'
     })
 
     const { nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud } = formValues
