@@ -7,26 +7,26 @@ const url = process.env.REACT_APP_HEROKU_URL;
 
 
 export const getAll = async () => {
-    const { data } = await axios.get(url)
+    const { data } = await axios.get(`${url}/students`)
     return data;
 };
 
 
 export const findID = async (id) => {
-    const resp = await axios.get(`${url}find/${id}`)
+    const resp = await axios.get(`${url}/students/find/${id}`)
     return resp;
 }
 
 
 export const findByParameters = async (find) => {
-    const resp = await axios.post(`${url}/find?q=${find}`)
+    const resp = await axios.post(`${url}/students/find?q=${find}`)
     return resp;
 }
 
 
 export const save = async (nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud) => {
 
-    const resp = await axios.post(`${url}`, {
+    const resp = await axios.post(`${url}/students`, {
 
         nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud
 
@@ -42,8 +42,11 @@ export const save = async (nombre, apellido, dni, actividad, fechaNacimiento, ns
                 hideClass: {
                     popup: 'animate__animated animate__fadeOutUp'
                 },
-                timer: 3000
+                timer: 3500
             })
+            setTimeout(() => {
+                window.location.replace("/")
+            }, 3000);
             return resp;
         })
         .catch((err) => {
@@ -61,30 +64,28 @@ export const save = async (nombre, apellido, dni, actividad, fechaNacimiento, ns
             })
             return err
         })
-    setTimeout(() => {
-        window.location.replace("/")
-    }, 3000);
     return resp
 }
 
 export const updateUser = async (id, nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud) => {
 
-    const { data } = await axios.put(`${url}/${id}`, {
+    const { data } = await axios.put(`${url}/students/${id}`, {
         nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud
     })
         .then((resp) => {
             Swal.fire({
-                title: 'Enviado',
-                text: 'Usuario editado correctamente',
+                title: `<span style='color:black'><i>Enviado</i></span>`,
+                text: `${nombre} ${apellido} ha sido editado correctamente`,
                 icon: 'success',
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                },
-                timer: 3000
-            })
+                iconColor: '#54E117',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 3500,
+                timerProgressBar: true,
+                background: ['#DEE9E9']
+            });
+
             localStorage.removeItem('id');
             return resp;
         })
@@ -110,20 +111,20 @@ export const updateUser = async (id, nombre, apellido, dni, actividad, fechaNaci
 
 export const deleteUser = async (id, nombre, apellido) => {
 
-    const resp = await axios.delete(`${url}/${id}`, { id })
+    const resp = await axios.delete(`${url}/students/${id}`, { id })
         .then(() => {
             Swal.fire({
-                title: 'Alumno eliminado',
-                text: `${nombre} ${apellido} ha sido eliminado correctamente`,
+                title: `<span style='color:black'><i>Alumno eliminado</i></span>`,
+                text: `${nombre} ${apellido} ha sido borrado correctamente`,
                 icon: 'success',
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                },
-                timer: 4000
-            })
+                iconColor: '#54E117',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                background: ['#DEE9E9']
+            });
         })
         .catch((err) => {
             Swal.fire({
@@ -143,4 +144,35 @@ export const deleteUser = async (id, nombre, apellido) => {
 
     return resp
 
+}
+
+
+export const login = async (email, password) => {
+
+    const { data } = await axios.post(`${url}/users/login`, {
+
+        email, password
+
+    })
+        .then(({ data }) => {
+            localStorage.setItem('token', data.token);
+            window.location.replace("/")
+            return data;
+        })
+        .catch((err) => {
+            Swal.fire({
+                title: 'Error',
+                text: 'Ingrese todos los datos correctamente',
+                icon: 'error',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                },
+                timer: 4000
+            })
+            return err
+        })
+    return data
 }

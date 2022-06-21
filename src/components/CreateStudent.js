@@ -105,7 +105,7 @@ export const CreateStudent = () => {
                                 value={fechaNacimiento}
                             />
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <input
                                 autoComplete="off"
                                 className="form-control"
@@ -115,7 +115,7 @@ export const CreateStudent = () => {
                                 onChange={handleInputChange}
                                 value={nsocio}
                             />
-                        </div>
+                        </div> */}
                         <div className="form-group">
                             <input
                                 autoComplete="off"

@@ -62,6 +62,7 @@ export const StudentList = () => {
     }
 
     const onClickDelete = ({ id, nombre, apellido }) => {
+        // e.preventDefault();
         Swal.fire({
             title: 'Eliminar alumno',
             icon: 'warning',
@@ -75,7 +76,7 @@ export const StudentList = () => {
             .then(async (result) => {
                 if (result.isConfirmed) {
                     await deleteUser(id, nombre, apellido)
-                    window.location.reload()
+                    getStudents();
                 }
             })
     }
@@ -97,7 +98,7 @@ export const StudentList = () => {
                 )
             }
         },
-        { field: 'nsocio', headerName: 'N° socio', width: 150, headerAlign: 'center', align: 'center' },
+        // { field: 'nsocio', headerName: 'N° socio', width: 150, headerAlign: 'center', align: 'center' },
         { field: 'antecedentesSalud', headerName: 'Antecedentes de salud', width: 200, headerAlign: 'center', align: 'center' },
         { field: 'categoria', headerName: 'Categoria', width: 150, headerAlign: 'center', align: 'center', },
         {
@@ -120,7 +121,7 @@ export const StudentList = () => {
             align: 'center',
             renderCell: ({ row }) => {
                 return (
-                    <button style={{ color: 'red', border: 'none', backgroundColor: 'white' }} onClick={() => onClickDelete(row)}><Delete /></button>
+                    <button style={{ color: 'red', border: 'none', backgroundColor: 'white' }} onClick={(e) => onClickDelete(row)}><Delete /></button>
                 )
             }
         },
@@ -133,7 +134,7 @@ export const StudentList = () => {
         dni: student.dni,
         actividad: student.actividad,
         telefono: student.telefono,
-        nsocio: student.nsocio,
+        // nsocio: student.nsocio,
         categoria: student.fechaNacimiento,
         antecedentesSalud: student.antecedentesSalud
     }))
