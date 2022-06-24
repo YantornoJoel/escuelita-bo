@@ -7,6 +7,7 @@ export const Footer = () => {
 
     const onLogout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('emailUser')
         window.location.reload();
     }
 
@@ -17,14 +18,17 @@ export const Footer = () => {
             {
                 window.screen.width < 400 && localStorage.getItem('token') &&
                 (
-                    <li className="nav-item navbar-brand mt-4" >
-                        <Link
-                            className="nav-link"
-                            id='btn-login'
-                            to="/"
-                            onClick={() => onLogout()}>Cerrar sesión <Logout style={{ color: '#6f42c1' }} />
-                        </Link>
-                    </li>
+                    <>
+                        <li className="nav-item navbar-brand mt-4" >
+                            <Link
+                                className="nav-link"
+                                id='btn-login'
+                                to="/"
+                                onClick={() => onLogout()}>Cerrar sesión <Logout style={{ color: '#6f42c1' }} />
+                            </Link>
+                        </li>
+                        <p>{localStorage.getItem('emailUser')}</p>
+                    </>
                 )
             }
         </div>

@@ -22,32 +22,38 @@ export const CreateStudent = () => {
         nombre: localStorage.getItem('nombre') || '',
         apellido: localStorage.getItem('apellido') || '',
         dni: localStorage.getItem('dni') || '',
+        edad: localStorage.getItem('edad') || '',
         fechaNacimiento: localStorage.getItem('categoria') || '',
         nsocio: localStorage.getItem('nsocio') || '',
         telefono: localStorage.getItem('telefono') || '',
+        telefono2: localStorage.getItem('telefono2') || '',
+        direccion: localStorage.getItem('direccion') || '',
         antecedentesSalud: localStorage.getItem('antecedentesSalud') || '',
         actividad: localStorage.getItem('actividad') || 'espacio de recreacion don orione'
     })
 
-    const { nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud } = formValues
+    const { nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud, edad, direccion, telefono2 } = formValues
 
     const onSubmit = async (e) => {
         e.preventDefault();
         if (localStorage.getItem('id')) {
-            updateUser(localStorage.getItem('id'), nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud)
+            updateUser(localStorage.getItem('id'), nombre, apellido, dni, edad, fechaNacimiento, telefono, telefono2, direccion, antecedentesSalud, actividad)
             localStorage.removeItem('nombre')
             localStorage.removeItem('apellido')
             localStorage.removeItem('dni')
+            localStorage.removeItem('edad')
             localStorage.removeItem('categoria')
             localStorage.removeItem('nsocio')
             localStorage.removeItem('telefono')
+            localStorage.removeItem('telefono2')
+            localStorage.removeItem('direccion')
             localStorage.removeItem('antecedentesSalud')
             localStorage.removeItem('actividad')
             setTimeout(() => {
                 window.location.replace("/")
             }, 3000);
         } else {
-            save(nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud);
+            save(nombre, apellido, dni, edad, fechaNacimiento, telefono, telefono2, direccion, antecedentesSalud, actividad);
         }
     }
 
@@ -98,6 +104,17 @@ export const CreateStudent = () => {
                             <input
                                 autoComplete="off"
                                 className="form-control"
+                                name="edad"
+                                placeholder="Edad"
+                                type="number"
+                                onChange={handleInputChange}
+                                value={edad}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                autoComplete="off"
+                                className="form-control"
                                 name="fechaNacimiento"
                                 placeholder="Categoria"
                                 type="number"
@@ -122,9 +139,32 @@ export const CreateStudent = () => {
                                 className="form-control"
                                 name="telefono"
                                 placeholder="Telefono"
-                                type="text"
+                                type="number"
                                 onChange={handleInputChange}
                                 value={telefono}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                autoComplete="off"
+                                className="form-control"
+                                name="telefono2"
+                                placeholder="Telefono 2"
+                                type="number"
+                                onChange={handleInputChange}
+                                value={telefono2}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <textarea
+                                style={{ maxHeight: '250px', minHeight: '40px' }}
+                                autoComplete="off"
+                                className="form-control"
+                                name="direccion"
+                                placeholder="Dirección"
+                                type="text"
+                                onChange={handleInputChange}
+                                value={direccion}
                             />
                         </div>
                         <div className="form-group">

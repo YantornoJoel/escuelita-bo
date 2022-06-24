@@ -24,11 +24,11 @@ export const findByParameters = async (find) => {
 }
 
 
-export const save = async (nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud) => {
+export const save = async (nombre, apellido, dni, edad, fechaNacimiento, telefono, telefono2, direccion, antecedentesSalud, actividad) => {
 
     const resp = await axios.post(`${url}/students`, {
 
-        nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud
+        nombre, apellido, dni, edad, fechaNacimiento, telefono, telefono2, direccion, antecedentesSalud, actividad
 
     })
         .then((resp) => {
@@ -67,10 +67,10 @@ export const save = async (nombre, apellido, dni, actividad, fechaNacimiento, ns
     return resp
 }
 
-export const updateUser = async (id, nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud) => {
+export const updateUser = async (id, nombre, apellido, dni, edad, fechaNacimiento, telefono, telefono2, direccion, antecedentesSalud, actividad) => {
 
     const { data } = await axios.put(`${url}/students/${id}`, {
-        nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud
+        nombre, apellido, dni, edad, fechaNacimiento, telefono, telefono2, direccion, antecedentesSalud, actividad
     })
         .then((resp) => {
             Swal.fire({

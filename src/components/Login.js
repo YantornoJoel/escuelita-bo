@@ -13,6 +13,7 @@ export const Login = () => {
     const { email, password } = formValues
 
     const onSubmit = async () => {
+        localStorage.setItem('emailUser', email)
         await login(email, password);
     }
 

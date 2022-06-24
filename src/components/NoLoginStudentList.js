@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Grid, TextField, Typography, Chip } from '@mui/material'
 
-import Swal from 'sweetalert2';
-import { Close, Delete, Edit, Search } from '@mui/icons-material';
-import { deleteUser, findByParameters, getAll } from '../service/Student';
+import { Close, Search } from '@mui/icons-material';
+import { findByParameters, getAll } from '../service/Student';
 import { FullScreenLoading } from './FullScreenLoading';
 
 
@@ -16,7 +15,7 @@ import { FullScreenLoading } from './FullScreenLoading';
 
 
 
-export const StudentList = () => {
+export const NoLoginStudentList = () => {
 
     const [students, setStudents] = useState([])
     const [counter, setCounter] = useState(0)
@@ -49,46 +48,11 @@ export const StudentList = () => {
         setSearch(e.target.value)
     }
 
-    const onClickEdit = ({ nombre, apellido, dni, categoria, nsocio, telefono, antecedentesSalud, actividad, id, edad, telefono2, direccion }) => {
-        localStorage.setItem('id', id)
-        localStorage.setItem('nombre', nombre);
-        localStorage.setItem('apellido', apellido);
-        localStorage.setItem('dni', dni);
-        localStorage.setItem('categoria', categoria);
-        localStorage.setItem('nsocio', nsocio);
-        localStorage.setItem('telefono', telefono);
-        localStorage.setItem('telefono2', telefono2);
-        localStorage.setItem('edad', edad);
-        localStorage.setItem('direccion', direccion);
-        localStorage.setItem('antecedentesSalud', antecedentesSalud);
-        localStorage.setItem('actividad', actividad);
-    }
-
-    const onClickDelete = ({ id, nombre, apellido }) => {
-        // e.preventDefault();
-        Swal.fire({
-            title: 'Eliminar alumno',
-            icon: 'warning',
-            html: `<span style='color:black; min-width: 200px'> ¿Seguro que desea borrar a ${nombre} ${apellido}? </span>`,
-            showCancelButton: true,
-            confirmButtonColor: '#219c97',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si',
-            cancelButtonText: 'Cancelar',
-        })
-            .then(async (result) => {
-                if (result.isConfirmed) {
-                    await deleteUser(id, nombre, apellido)
-                    getStudents();
-                }
-            })
-    }
 
     const columns = [
         { field: 'nombre', headerName: 'Nombre', width: 250, headerAlign: 'center', align: 'center' },
         { field: 'apellido', headerName: 'Apellido', width: 250, headerAlign: 'center', align: 'center' },
         { field: 'dni', headerName: 'Dni', width: 200, headerAlign: 'center', align: 'center' },
-        { field: 'edad', headerName: 'Edad', width: 200, headerAlign: 'center', align: 'center' },
         { field: 'actividad', headerName: 'Actividad', width: 200, headerAlign: 'center', align: 'center' },
         {
             field: 'telefono',
@@ -103,33 +67,8 @@ export const StudentList = () => {
             }
         },
         // { field: 'nsocio', headerName: 'N° socio', width: 150, headerAlign: 'center', align: 'center' },
-        { field: 'direccion', headerName: 'Dirección', width: 200, headerAlign: 'center', align: 'center' },
         { field: 'antecedentesSalud', headerName: 'Antecedentes de salud', width: 200, headerAlign: 'center', align: 'center' },
         { field: 'categoria', headerName: 'Categoria', width: 150, headerAlign: 'center', align: 'center', },
-        {
-            field: 'check',
-            headerName: 'Editar',
-            width: 100,
-            headerAlign: 'center',
-            align: 'center',
-            renderCell: ({ row }) => {
-                return (
-                    <a href={`/create`} style={{ color: '#27929F' }} onClick={() => onClickEdit(row)}><Edit /></a>
-                )
-            }
-        },
-        {
-            field: 'delete',
-            headerName: 'Eliminar',
-            width: 100,
-            headerAlign: 'center',
-            align: 'center',
-            renderCell: ({ row }) => {
-                return (
-                    <button style={{ color: 'red', border: 'none', backgroundColor: 'white' }} onClick={(e) => onClickDelete(row)}><Delete /></button>
-                )
-            }
-        },
     ]
 
     const rows = students.map(student => ({
@@ -137,12 +76,9 @@ export const StudentList = () => {
         nombre: student.nombre,
         apellido: student.apellido,
         dni: student.dni,
-        edad: student.edad,
         actividad: student.actividad,
         telefono: student.telefono,
-        telefono2: student.telefono2,
         // nsocio: student.nsocio,
-        direccion: student.direccion,
         categoria: student.fechaNacimiento,
         antecedentesSalud: student.antecedentesSalud
     }))
