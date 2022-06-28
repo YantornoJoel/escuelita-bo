@@ -40,8 +40,9 @@ export const StudentList = () => {
 
     const findByName = async (find) => {
         setLoading(true)
-        const { data } = await findByParameters(find)
-        setStudents(data)
+        const { students, counter } = await findByParameters(find)
+        setStudents(students)
+        setCounter(counter)
         setLoading(false)
     }
 
@@ -87,8 +88,8 @@ export const StudentList = () => {
     const columns = [
         { field: 'nombre', headerName: 'Nombre', width: 250, headerAlign: 'center', align: 'center' },
         { field: 'apellido', headerName: 'Apellido', width: 250, headerAlign: 'center', align: 'center' },
-        { field: 'dni', headerName: 'Dni', width: 200, headerAlign: 'center', align: 'center' },
-        { field: 'edad', headerName: 'Edad', width: 200, headerAlign: 'center', align: 'center' },
+        { field: 'dni', headerName: 'Dni', width: 150, headerAlign: 'center', align: 'center' },
+        { field: 'edad', headerName: 'Edad', width: 100, headerAlign: 'center', align: 'center' },
         { field: 'actividad', headerName: 'Actividad', width: 200, headerAlign: 'center', align: 'center' },
         {
             field: 'telefono',
@@ -104,12 +105,12 @@ export const StudentList = () => {
         },
         // { field: 'nsocio', headerName: 'N° socio', width: 150, headerAlign: 'center', align: 'center' },
         { field: 'direccion', headerName: 'Dirección', width: 200, headerAlign: 'center', align: 'center' },
-        { field: 'antecedentesSalud', headerName: 'Antecedentes de salud', width: 200, headerAlign: 'center', align: 'center' },
-        { field: 'categoria', headerName: 'Categoria', width: 150, headerAlign: 'center', align: 'center', },
+        { field: 'antecedentesSalud', headerName: 'Antecedentes de salud', width: 150, headerAlign: 'center', align: 'center' },
+        { field: 'categoria', headerName: 'Categoria', width: 125, headerAlign: 'center', align: 'center', },
         {
             field: 'check',
             headerName: 'Editar',
-            width: 100,
+            width: 90,
             headerAlign: 'center',
             align: 'center',
             renderCell: ({ row }) => {
@@ -121,7 +122,7 @@ export const StudentList = () => {
         {
             field: 'delete',
             headerName: 'Eliminar',
-            width: 100,
+            width: 90,
             headerAlign: 'center',
             align: 'center',
             renderCell: ({ row }) => {

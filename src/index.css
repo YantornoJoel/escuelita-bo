@@ -112,3 +112,18 @@
     background-color: #6f42c1;
     transition: 0.5s ease-in-out;
 }
+
+#btn-create{
+    border: 2px solid #6f42c1;
+    border-radius: 8px;
+    color: #6f42c1;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+#btn-create:hover{
+    color: white;
+    border: 2px solid white;
+    background-color: #6f42c1;
+    transition: 0.5s ease-in-out;
+}

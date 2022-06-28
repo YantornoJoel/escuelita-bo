@@ -52,7 +52,8 @@ export const NoLoginStudentList = () => {
     const columns = [
         { field: 'nombre', headerName: 'Nombre', width: 250, headerAlign: 'center', align: 'center' },
         { field: 'apellido', headerName: 'Apellido', width: 250, headerAlign: 'center', align: 'center' },
-        { field: 'dni', headerName: 'Dni', width: 200, headerAlign: 'center', align: 'center' },
+        { field: 'dni', headerName: 'Dni', width: 150, headerAlign: 'center', align: 'center' },
+        { field: 'edad', headerName: 'Edad', width: 100, headerAlign: 'center', align: 'center' },
         { field: 'actividad', headerName: 'Actividad', width: 200, headerAlign: 'center', align: 'center' },
         {
             field: 'telefono',
@@ -67,8 +68,9 @@ export const NoLoginStudentList = () => {
             }
         },
         // { field: 'nsocio', headerName: 'N° socio', width: 150, headerAlign: 'center', align: 'center' },
-        { field: 'antecedentesSalud', headerName: 'Antecedentes de salud', width: 200, headerAlign: 'center', align: 'center' },
-        { field: 'categoria', headerName: 'Categoria', width: 150, headerAlign: 'center', align: 'center', },
+        { field: 'direccion', headerName: 'Dirección', width: 200, headerAlign: 'center', align: 'center' },
+        { field: 'antecedentesSalud', headerName: 'Antecedentes de salud', width: 150, headerAlign: 'center', align: 'center' },
+        { field: 'categoria', headerName: 'Categoria', width: 125, headerAlign: 'center', align: 'center', },
     ]
 
     const rows = students.map(student => ({
@@ -76,9 +78,12 @@ export const NoLoginStudentList = () => {
         nombre: student.nombre,
         apellido: student.apellido,
         dni: student.dni,
+        edad: student.edad,
         actividad: student.actividad,
         telefono: student.telefono,
+        telefono2: student.telefono2,
         // nsocio: student.nsocio,
+        direccion: student.direccion,
         categoria: student.fechaNacimiento,
         antecedentesSalud: student.antecedentesSalud
     }))

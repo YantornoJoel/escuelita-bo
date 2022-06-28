@@ -19,8 +19,8 @@ export const findID = async (id) => {
 
 
 export const findByParameters = async (find) => {
-    const resp = await axios.post(`${url}/students/find?q=${find}`)
-    return resp;
+    const { data } = await axios.post(`${url}/students/find?q=${find}`)
+    return data;
 }
 
 

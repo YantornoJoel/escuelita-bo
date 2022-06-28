@@ -32,7 +32,7 @@ export const CreateStudent = () => {
         actividad: localStorage.getItem('actividad') || 'espacio de recreacion don orione'
     })
 
-    const { nombre, apellido, dni, actividad, fechaNacimiento, nsocio, telefono, antecedentesSalud, edad, direccion, telefono2 } = formValues
+    const { nombre, apellido, dni, actividad, fechaNacimiento, telefono, antecedentesSalud, edad, direccion, telefono2 } = formValues
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -192,7 +192,9 @@ export const CreateStudent = () => {
                         </div>
 
                         <button
-                            className="btn btn-primary btn-block mt-1 mb-5"
+                            // className="btn btn-primary btn-block mt-1 mb-5"
+                            className='btn btn-block mt-1 mb-1'
+                            id='btn-create'
                             type="submit"
                         >
                             Enviar
